@@ -6,48 +6,57 @@
       %span.icon-bar
       %span.icon-bar
       %span.icon-bar
-    %a.navbar-brand{href: "#"} STI
+    %a.navbar-brand{href: "#"} &nbsp STI
   / Collect the nav links, forms, and other content for toggling
   #bs-example-navbar-collapse-1.collapse.navbar-collapse
     %ul.nav.navbar-nav
-      %li.active
-        %a{href: "/"} Home
-      %li.dropdown
-        %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-          Dropdown
-          %b.caret
-        %ul.dropdown-menu
-          %li
-            %a{href: "#"} Action
-          %li
-            %a{href: "#"} Another action
-          %li
-            %a{href: "#"} Something else here
-          %li.divider
-          %li
-            %a{href: "#"} Separated link
-          %li.divider
-          %li
-            %a{href: "#"} One more separated link
-    %form.navbar-form.navbar-left{role: "search"}
-      .form-group
-        %input.form-control{placeholder: "Search", type: "text"}/
-      %button.btn.btn-default{type: "submit"} Submit
+      - if current_user
+        %li.active
+          %a{href: "/"} Home
+        %li.dropdown
+          %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+            Dropdown
+            %b.caret
+          %ul.dropdown-menu
+            %li
+              %a{href: "#"} Action
+            %li
+              %a{href: "#"} Another action
+            %li
+              %a{href: "#"} Something else here
+            %li.divider
+            %li
+              %a{href: "#"} Separated link
+            %li.divider
+            %li
+              %a{href: "#"} One more separated link
+      %form.navbar-form.navbar-left{role: "search"}
+        .form-group
+          %input.form-control{placeholder: "Search", type: "text"}/
+        %button.btn.btn-default{type: "submit"} Submit
     %ul.nav.navbar-nav.navbar-right
-      %li
-        %a{href: "#"} Sign-in
-      %li.dropdown
-        %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-          Account Settings
-          %b.caret
-        %ul.dropdown-menu
-          %li
-            %a{href: "#"} Manage Account
-          %li
-            %a{href: "#"} Another action
-          %li
-            %a{href: "#"} Something else here
-          %li.divider
-          %li
-            %a{href: "#"} Logout
+      - if !current_user
+        %li
+          %a{href: "/users/sign_in"} Sign-in
+        %li
+          %a{href: "/users/sign_up"} Register
+        %li
+          = link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in"
+      - else
+        %li
+          %a{href: ""}= current_user.email
+        %li.dropdown
+          %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+            Account Settings
+            %b.caret
+          %ul.dropdown-menu
+            %li
+              %a{href: "#"} Manage Account
+            %li
+              %a{href: "#"} Another action
+            %li
+              %a{href: "#"} Something else here
+            %li.divider
+            %li
+              %a{href: "/users/sign_out"} Logout
   / /.navbar-collapse
