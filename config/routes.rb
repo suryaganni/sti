@@ -1,5 +1,7 @@
 Sti::Application.routes.draw do
 
+  resources :institutes
+
   resources :categories
 
   resources :authentications

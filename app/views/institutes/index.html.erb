@@ -1,0 +1,29 @@
+<h1>Listing institutes</h1>
+
+<%= link_to 'New Institute', new_institute_path %>
+
+<br>
+
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @institutes.each do |institute| %>
+        <tr>
+          <td><%= institute.name %></td>
+          <td><%= link_to 'Show', institute %></td>
+          <td><%= link_to 'Edit', edit_institute_path(institute) %></td>
+          <td><%= link_to 'Destroy', institute, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
