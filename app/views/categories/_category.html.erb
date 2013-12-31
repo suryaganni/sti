@@ -1,0 +1,10 @@
+<div class="category">
+  <div class="created_at"><%= category.created_at.strftime("%B %d, %Y") %></div>
+  <div class="content">
+    <%= link_to category.name, "/categories/#{category.id}/edit" %>
+  </div>
+  <div class="actions">
+    <%= link_to "Reply", new_category_path(:parent_id => category) %> |
+    <%= link_to "Destroy", category, :confirm => "Are you sure?", :method => :delete %>
+  </div>
+</div>

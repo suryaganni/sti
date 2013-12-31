@@ -9,4 +9,8 @@ class Category < ActiveRecord::Base
   has_many :courses, :through => :categories_combinations
   has_many :categories_combinations
 
+  def parent
+    self.category
+  end
+
 end

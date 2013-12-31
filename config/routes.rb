@@ -1,5 +1,7 @@
 Sti::Application.routes.draw do
 
+  resources :categories
+
   resources :authentications
 
   devise_for :users, :controllers => {:registrations => 'registrations'}
