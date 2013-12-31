@@ -10,6 +10,7 @@ class InstitutesController < BaseController
   # GET /institutes/1
   # GET /institutes/1.json
   def show
+    @course = Course.new
   end
 
   # GET /institutes/new
@@ -69,6 +70,7 @@ class InstitutesController < BaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def institute_params
-      params.require(:institute).permit(:name, :user_id)
+      params.require(:institute).permit(:name, :user_id, :id, courses_attributes: [:id, :name, :institute_id, :price, :_destroy, categories_combinations_attributes: [:id, :category_id, :_destroy]])
     end
+
 end

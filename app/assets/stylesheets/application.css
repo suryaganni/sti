@@ -61,3 +61,44 @@ body {
   margin-left: 30px;
   margin-left: 1;
 }
+
+.courses {
+  list-style: none;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  > li {
+    margin: 20px 0;
+    padding: 0;
+  }
+}
+
+.categories {
+  list-style: upper-alpha;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+  > li {
+    margin: 5px 0;
+    margin-left: 25px;
+  }
+}
+
+form > fieldset {
+  border: none;
+  border: solid 1px #CCC;
+  padding: 10px 15px;
+  margin: 15px 0;
+  fieldset {
+    border: none;
+    margin: 0;
+    margin: 10px 0;
+    padding: 0;
+  }
+}
+
+textarea {
+  height: 40px;
+  width: 350px;
+  margin-top: 3px;
+}

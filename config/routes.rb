@@ -6,6 +6,8 @@ Sti::Application.routes.draw do
 
   resources :authentications
 
+  resources :courses
+
   devise_for :users, :controllers => {:registrations => 'registrations'}
 
   match '/auth/:provider/callback' => 'authentications#create', via: [:post, :get]

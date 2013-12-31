@@ -14,3 +14,20 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree ./bootstrap
+
+$(document).ready(function() {
+
+  $(document).on("click","a.remove_fields", function (event) {
+    event.preventDefault();
+    $(this).prev('input[type=hidden]').val('1');
+    $(this).closest('fieldset').hide();
+  });
+
+  $(document).on("click","a.add_fields", function (event) {
+    event.preventDefault();
+    var time = new Date().getTime();
+    var regexp = new RegExp($(this).data('id'), 'g');
+    $(this).before($(this).data('fields').replace(regexp, time));
+  });
+
+});

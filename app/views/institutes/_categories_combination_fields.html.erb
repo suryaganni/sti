@@ -1,0 +1,6 @@
+<fieldset>
+  <%= f.label "Select Category" %>
+  <%= f.collection_select :category_id, Category.all, :id, :name, {}, {} %>
+  <%= f.hidden_field :_destroy %>
+  <%= link_to "Remove Category", '#', class: "remove_fields" %>
+</fieldset>
