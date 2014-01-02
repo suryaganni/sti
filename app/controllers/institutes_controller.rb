@@ -70,7 +70,7 @@ class InstitutesController < BaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def institute_params
-      params.require(:institute).permit(:name, :user_id, :id, courses_attributes: [:id, :name, :institute_id, :price, :_destroy, categories_combinations_attributes: [:id, :category_id, :_destroy]])
+      params.require(:institute).permit(:name, :user_id, :id, courses_attributes: [:id, :name, :institute_id, :price, :_destroy, categories_combinations_attributes: [:id, :category_id, :start_date, :end_date, :start_time, :end_time, :duration, :_destroy]])
     end
 
 end
