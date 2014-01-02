@@ -32,7 +32,7 @@
               %a{href: "#"} One more separated link
       %form.navbar-form.navbar-left{role: "search"}
         .form-group
-          %input.form-control{placeholder: "Search", type: "text"}/
+          = multiselect_list
         %button.btn.btn-default{type: "submit"} Submit
     %ul.nav.navbar-nav.navbar-right
       - if !current_user

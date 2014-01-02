@@ -17,4 +17,15 @@ module ApplicationHelper
     link_to(name, '#', class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")})
   end
 
+  def multiselect_list
+    content_tag(:select, id: "filter_courses", style: "display: none;", multiple: "multiple") do
+      @parent_categories.each do |c|
+        concat content_tag(:optgroup, "",label: c.name)
+        c.sub_categories.each do |sc|
+          concat content_tag(:option, sc.name, value: sc.id)
+        end
+      end
+    end
+  end
+
 end

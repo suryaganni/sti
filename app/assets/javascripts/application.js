@@ -30,4 +30,11 @@ $(document).ready(function() {
     $(this).before($(this).data('fields').replace(regexp, time));
   });
 
+  $(document).on("page:change", function () {
+    $('#filter_courses').multiselect({
+      includeSelectAllOption: false,
+    	enableCaseInsensitiveFiltering: true
+    });
+  });
+
 });

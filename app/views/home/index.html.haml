@@ -1,1 +1,40 @@
-%img{:src=>"/assets/home.jpg", :width => "100%", :height => "100%"} 
+- @courses.each do |course|
+  %div.panel.panel-success
+    %div.panel-heading
+      %h3.panel-title
+        = "#{course.institute.name} - #{course.name}"
+        %b.pull-right
+          Price:
+          = course.price
+    %div.panel-body
+      %div.row.well
+        %div.col-md-2
+          Course Name:
+        %div.col-md-2
+          Start Date:
+        %div.col-md-2
+          End Date:
+        %div.col-md-2
+          Start Time:
+        %div.col-md-2
+          End Time:
+        %div.col-md-2
+          Duration:
+      - combination_group = course.categories_combinations
+      - combination_group.each do |cg|
+        - category_name = cg.category.name
+        %div.row.well-sm
+          %div.col-md-2
+            = category_name
+          %div.col-md-2
+            = cg.start_date.strftime("%d-%b-%Y")
+          %div.col-md-2
+            = cg.end_date.strftime("%d-%b-%Y")
+          %div.col-md-2
+            = cg.start_time.strftime('%H:%M:%S')
+          %div.col-md-2
+            = cg.end_time.strftime('%H:%M:%S')
+          %div.col-md-2
+            = cg.duration
+
+= paginate @courses, :theme => 'twitter-bootstrap-3'
