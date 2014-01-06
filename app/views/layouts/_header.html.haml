@@ -6,7 +6,7 @@
       %span.icon-bar
       %span.icon-bar
       %span.icon-bar
-    %a.navbar-brand{href: "#"} &nbsp STI
+    %a.navbar-brand{href: "/"} &nbsp STI
   / Collect the nav links, forms, and other content for toggling
   #bs-example-navbar-collapse-1.collapse.navbar-collapse
     %ul.nav.navbar-nav
@@ -15,21 +15,14 @@
           %a{href: "/"} Home
         %li.dropdown
           %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-            Host Courses
+            Institute Details
             %b.caret
           %ul.dropdown-menu
             %li
-              %a{href: "/institutes"} List All
-            %li
-              %a{href: "/institutes/new"} Create New
-            %li
-              %a{href: "#"} Something else here
+              %a{href: "/institutes"} All Institutes
             %li.divider
             %li
               %a{href: "#"} Separated link
-            %li.divider
-            %li
-              %a{href: "#"} One more separated link
       = form_tag "/", :method => :post, :role => "search", :class => "navbar-form navbar-left" do
         .form-group
           = select_tag "category[ids][]", grouped_options_for_select(Category.categories_group), multiple: true, class: "filter_courses", style: "display: none;"

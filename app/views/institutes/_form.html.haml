@@ -1,13 +1,13 @@
-%div.panel.panel-primary
-  %div.panel-heading
-    %h3.panel-title
+.panel.panel-primary
+  .panel-heading
+    .panel-title
       .row
         .col-md-4
-          = @institute.name
+          New Institute
         .col-md-8
           .pull-right
-            = link_to 'Back', institutes_path, class: "btn btn-default inline active", role: "button"
-  %div.panel-body
+            = link_to 'Back', institutes_path, class: "btn btn-info active"
+  .panel-body
     = form_for(@institute, :html => { :role => "form" }) do |f|
       - if @institute.errors.any?
         #error_explanation
@@ -21,9 +21,6 @@
         = f.label "Institute Name"
         = f.text_field :name, :class => "form-control", :placeholder => "Enter name"
       .form-group
-        = f.fields_for :courses do |builder|
-          = render 'course_fields', f: builder
-      .form-group
-        = link_to_add_fields "Add Courses", f, :courses
+        = f.hidden_field :user_id, :value => current_user.id
       .actions
-        = f.submit "Update", :class => "btn btn-default"
+        = f.submit "Submit", :class => "btn btn-danger"

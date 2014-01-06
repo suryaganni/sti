@@ -1,0 +1,32 @@
+- @courses.each do |course|
+  %div.panel.panel-primary
+    %div.panel-heading
+    %div.panel-body
+      = form_for(course, :html => { :role => "form" }) do |f|
+        - if course.errors.any?
+          #error_explanation
+            %h2
+              = pluralize(course.errors.count, "error")
+              prohibited this course from being saved:
+            %ul
+              - course.errors.full_messages.each do |msg|
+                %li= msg
+        %fieldset
+          = f.label "Course Name"
+          = f.text_field :name
+          = f.label :price
+          = f.number_field :price
+          = f.hidden_field :institute_id, :value => @institute.id
+          = f.hidden_field :_destroy
+          = link_to "Remove Course", '#', class: "remove_fields"
+          %button.btn.btn-info.btn-xs{"data-target" => "#ccs_#{f.object_id}", "data-toggle" => "collapse", type: "button"}
+            Expand/Collapse
+          .collapse{ :id => "ccs_#{f.object_id}"}
+            = f.fields_for :categories_combinations do |builder|
+              = render 'categories_combination_fields', f: builder
+            %div
+              = link_to_add_fields "Add categories_combinations", f, :categories_combinations
+        = f.submit "Update", :class => "btn btn-danger"
+
+
+= paginate @courses, :theme => 'twitter-bootstrap-3'

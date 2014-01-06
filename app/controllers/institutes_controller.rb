@@ -11,7 +11,6 @@ class InstitutesController < BaseController
   # GET /institutes/1
   # GET /institutes/1.json
   def show
-    @course = Course.new
   end
 
   # GET /institutes/new
@@ -21,6 +20,8 @@ class InstitutesController < BaseController
 
   # GET /institutes/1/edit
   def edit
+    @institute = Institute.find(params[:id])
+    @courses = Kaminari.paginate_array(@institute.courses).page(params[:page]).per(5)
   end
 
   # POST /institutes
@@ -44,7 +45,7 @@ class InstitutesController < BaseController
   def update
     respond_to do |format|
       if @institute.update(institute_params)
-        format.html { redirect_to @institute, notice: 'Institute was successfully updated.' }
+        format.html { render action: 'edit' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

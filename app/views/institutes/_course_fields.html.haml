@@ -10,7 +10,10 @@
       = f.hidden_field :institute_id, :value => @institute.id
       = f.hidden_field :_destroy
       = link_to "Remove Course", '#', class: "remove_fields"
-      = f.fields_for :categories_combinations do |builder|
-        = render 'categories_combination_fields', f: builder
-      %div
-        = link_to_add_fields "Add categories_combinations", f, :categories_combinations
+      %button.btn.btn-info.btn-xs{"data-target" => "#ccs_#{f.object_id}", "data-toggle" => "collapse", type: "button"}
+        Expand/Collapse
+      .collapse{ :id => "ccs_#{f.object_id}"}
+        = f.fields_for :categories_combinations do |builder|
+          = render 'categories_combination_fields', f: builder
+        %div
+          = link_to_add_fields "Add categories_combinations", f, :categories_combinations
