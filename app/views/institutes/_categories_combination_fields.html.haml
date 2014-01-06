@@ -1,0 +1,23 @@
+%div.panel.panel-danger
+  %div.panel-heading
+    %h3.panel-title
+  %div.panel-body
+    %fieldset
+      .form-group
+        = f.label "Select Course"
+        = f.select :category_id, grouped_options_for_select(Category.categories_group, :selected => f.object.category_id), {}, {class: "filter_courses", style: "display: none;"}
+      .form-group
+        = f.label "Start Date"
+        = f.date_field :start_date, :id=>"dpd1"
+        = f.label "End Date"
+        = f.date_field :end_date, :id=>"dpd2"
+      .form-group
+        = f.label "Start Time"
+        = f.time_select :start_time
+        = f.label "End Time"
+        = f.time_select :end_time
+      .form-group
+        = f.label "duration"
+        = f.number_field :duration
+        = f.hidden_field :_destroy
+        = link_to "Remove Category", '#', class: "remove_fields"

@@ -1,5 +1,5 @@
 - @courses.each do |course|
-  %div.panel.panel-success
+  %div.panel.panel-primary
     %div.panel-heading
       %h3.panel-title
         = "#{course.institute.name} - #{course.name}"
@@ -9,17 +9,17 @@
     %div.panel-body
       %div.row.well
         %div.col-md-2
-          Course Name:
+          Course Name
         %div.col-md-2
-          Start Date:
+          Start Date
         %div.col-md-2
-          End Date:
+          End Date
         %div.col-md-2
-          Start Time:
+          Start Time
         %div.col-md-2
-          End Time:
+          End Time
         %div.col-md-2
-          Duration:
+          Duration
       - combination_group = course.categories_combinations
       - combination_group.each do |cg|
         - category_name = cg.category.name

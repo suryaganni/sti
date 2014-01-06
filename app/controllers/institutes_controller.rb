@@ -5,6 +5,7 @@ class InstitutesController < BaseController
   # GET /institutes.json
   def index
     @institutes = Institute.where(:user_id => current_user.id)
+    @institutes = Kaminari.paginate_array(@institutes).page(params[:page]).per(5)
   end
 
   # GET /institutes/1

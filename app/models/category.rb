@@ -13,4 +13,17 @@ class Category < ActiveRecord::Base
     self.category
   end
 
+  def self.categories_group
+    grouped_categories = []
+    Category.where("parent_id is null").each do |c|
+      parent_categories = c.name
+      sub_categories = []
+      c.sub_categories.each do |sc|
+        sub_categories << [sc.name, sc.id]
+      end
+      grouped_categories << [parent_categories, sub_categories]
+    end
+    return grouped_categories
+  end
+
 end
