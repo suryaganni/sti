@@ -15,6 +15,11 @@
 body {
   overflow-x: hidden;
   padding-top: 0.5%;
+  background-color: #303030 !important;
+}
+
+.body-color {
+  color: #FDEDD0 !important;
 }
 
 .category {
@@ -101,4 +106,8 @@ textarea {
   height: 40px;
   width: 350px;
   margin-top: 3px;
+}
+
+.panel-header {
+  background-color: #DEEFFA;
 }

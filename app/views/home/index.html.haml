@@ -1,5 +1,5 @@
 - @courses.each do |course|
-  %div.panel.panel-primary
+  %div.panel.panel-default
     %div.panel-heading
       %h3.panel-title
         = "#{course.institute.name} - #{course.name}"
@@ -7,7 +7,7 @@
           Price:
           = course.price
     %div.panel-body
-      %div.row.btn-info
+      %div.row.panel-header
         %div.col-md-2
           Course Name
         %div.col-md-2

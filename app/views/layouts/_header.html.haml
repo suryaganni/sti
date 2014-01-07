@@ -1,4 +1,4 @@
-%nav.navbar.navbar-default{role: "navigation"}
+%nav.navbar.navbar-inverse{role: "navigation"}
   / Brand and toggle get grouped for better mobile display
   .navbar-header
     %button.navbar-toggle{"data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", type: "button"}
@@ -21,8 +21,6 @@
             %li
               %a{href: "/institutes"} All Institutes
             %li.divider
-            %li
-              %a{href: "#"} Separated link
       = form_tag "/", :method => :post, :role => "search", :class => "navbar-form navbar-left" do
         .form-group
           = select_tag "category[ids][]", grouped_options_for_select(Category.categories_group), multiple: true, class: "filter_courses", style: "display: none;"
@@ -44,11 +42,7 @@
             %b.caret
           %ul.dropdown-menu
             %li
-              %a{href: "#"} Manage Account
-            %li
-              %a{href: "#"} Another action
-            %li
-              %a{href: "#"} Something else here
+              %a{href: "/users/edit"} Edit Account
             %li.divider
             %li
               %a{href: "/users/sign_out"} Logout

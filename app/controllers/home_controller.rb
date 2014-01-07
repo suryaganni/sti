@@ -14,5 +14,11 @@ class HomeController < ApplicationController
       @courses = Course.order("name").page(params[:page]).per(5)
     end
   end
+  
+  def about_us
+  end
+  
+  def contact_us
+  end
 
 end
