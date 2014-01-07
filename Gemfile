@@ -40,6 +40,10 @@ gem 'omniauth-facebook'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 
+group :production do
+  gem 'rails_12factor'
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
