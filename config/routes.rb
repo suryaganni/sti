@@ -15,6 +15,7 @@ Sti::Application.routes.draw do
   match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get]
   match '/contact_us' => 'home#contact_us', via: [:get]
   match '/about_us' => 'home#about_us', via: [:get]
+  match '/institutes/add_new_course/:id' => 'institutes#add_new_course', via: [:get]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

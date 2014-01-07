@@ -1,0 +1,27 @@
+.panel.panel-default
+  .panel-heading
+    .panel-title
+      .row
+        .col-md-4
+          New Course
+        .col-md-8
+          .pull-right
+            = link_to 'Back', institutes_path, class: "btn btn-info active"
+  .panel-body
+    = form_for @institute , :html => { :role => "form" }do |f|
+      - if @institute.errors.any?
+        .error_messages
+          %h2
+            = pluralize(@institute.errors.count, "error")
+            prohibited this institute from being saved:
+          %ul
+            - @institute.errors.full_messages.each do |msg|
+              %li= msg
+      .form-group
+        = f.label "Institute Name"
+        = f.text_field :name, :class => "form-control", :placeholder => "Enter name"
+      = f.fields_for :courses, @course do |builder|
+        = render 'course_fields', f: builder
+      = link_to_add_fields "Add Courses", f, :courses
+      .actions
+        = f.submit "Submit", :class => "btn btn-danger pull-right"

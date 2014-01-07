@@ -1,3 +1,10 @@
+.row.body-color
+  .col-md-4
+    = @institute.name
+  .col-md-8
+    .pull-right
+      = link_to "Add New Course", "/institutes/add_new_course/#{@institute.id}", :class => "btn btn-primary active"
+%br
 - @courses.each do |course|
   %div.panel.panel-default
     %div.panel-heading

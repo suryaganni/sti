@@ -1,5 +1,7 @@
 class InstitutesController < BaseController
   before_action :set_institute, only: [:show, :edit, :update, :destroy]
+  before_action :set_categories_group, only: [:edit, :add_new_course, :new, :update]
+  before_action :set_courses, only: [:edit, :update]
 
   # GET /institutes
   # GET /institutes.json
@@ -17,11 +19,15 @@ class InstitutesController < BaseController
   def new
     @institute = Institute.new
   end
+  
+  def add_new_course
+    @institute = Institute.find(params[:id])
+    @course = Course.new
+  end
 
   # GET /institutes/1/edit
   def edit
     @institute = Institute.find(params[:id])
-    @courses = Kaminari.paginate_array(@institute.courses).page(params[:page]).per(5)
   end
 
   # POST /institutes
@@ -31,7 +37,7 @@ class InstitutesController < BaseController
 
     respond_to do |format|
       if @institute.save
-        format.html { redirect_to @institute, notice: 'Institute was successfully created.' }
+        format.html { redirect_to "/institutes/#{@institute.id}/edit", notice: 'Institute was successfully created.' }
         format.json { render action: 'show', status: :created, location: @institute }
       else
         format.html { render action: 'new' }
@@ -45,7 +51,7 @@ class InstitutesController < BaseController
   def update
     respond_to do |format|
       if @institute.update(institute_params)
-        format.html { render action: 'edit' }
+        format.html { redirect_to "/institutes/#{@institute.id}/edit", notice: 'Institute was successfully created.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -73,6 +79,14 @@ class InstitutesController < BaseController
     # Never trust parameters from the scary internet, only allow the white list through.
     def institute_params
       params.require(:institute).permit(:name, :user_id, :id, courses_attributes: [:id, :name, :institute_id, :price, :_destroy, categories_combinations_attributes: [:id, :category_id, :start_date, :end_date, :start_time, :end_time, :duration, :_destroy]])
+    end
+    
+    def set_categories_group
+      @categories_group = Category.categories_group
+    end
+    
+    def set_courses
+      @courses = Kaminari.paginate_array(@institute.courses).page(params[:page]).per(5)
     end
 
 end
