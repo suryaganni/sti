@@ -40,6 +40,13 @@ $(document).ready(function() {
       format: 'yyyy-mm-dd'
     });
   });
+  
+  $(document).on("page:change", function () {
+    $('.filter_courses').multiselect({
+      includeSelectAllOption: false,
+    	enableCaseInsensitiveFiltering: true
+    });
+  });
 
 });
 
