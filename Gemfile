@@ -44,6 +44,12 @@ group :production do
   gem 'rails_12factor'
 end
 
+group :test do
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
+  gem "factory_girl_rails", "~> 4.0"
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
