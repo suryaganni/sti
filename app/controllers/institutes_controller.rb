@@ -1,5 +1,5 @@
 class InstitutesController < BaseController
-  before_action :set_institute, only: [:show, :edit, :update, :destroy]
+  before_action :set_institute, only: [:show, :edit, :add_new_course, :update, :destroy]
   before_action :set_categories_group, only: [:edit, :add_new_course, :new, :update]
   before_action :set_courses, only: [:edit, :update]
 
@@ -12,8 +12,8 @@ class InstitutesController < BaseController
 
   # GET /institutes/1
   # GET /institutes/1.json
-  def show
-  end
+  #  def show
+  #  end
 
   # GET /institutes/new
   def new
@@ -21,7 +21,6 @@ class InstitutesController < BaseController
   end
   
   def add_new_course
-    @institute = Institute.find(params[:id])
     @course = Course.new
   end
 

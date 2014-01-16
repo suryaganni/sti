@@ -3,8 +3,6 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
-gem 'pg'
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -42,6 +40,18 @@ gem 'bootstrap-kaminari-views'
 
 group :production do
   gem 'rails_12factor'
+  gem 'pg'
+end
+
+group :development do
+  gem 'sqlite3'
+end
+
+gem "rspec-rails", :group => [:test, :development]
+
+group :test, :development do
+  gem 'factory_girl_rails'
+  gem 'faker'
 end
 
 # Use ActiveModel has_secure_password
