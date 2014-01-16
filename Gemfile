@@ -51,13 +51,8 @@ gem "rspec-rails", :group => [:test, :development]
 
 group :test, :development do
   gem 'factory_girl_rails'
-  gem 'faker'
-end
-
-group :test do
-  gem 'rspec-rails'
   gem 'shoulda-matchers'
-  gem "factory_girl_rails", "~> 4.0"
+  gem 'faker'
 end
 
 # Use ActiveModel has_secure_password
